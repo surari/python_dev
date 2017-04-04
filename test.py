@@ -1,3 +1,4 @@
-import json
-import data
-data = "todos.json"
+import 'json'
+import 'data'
+
+suraimu = 'kuti-to'
