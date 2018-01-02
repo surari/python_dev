@@ -18,7 +18,7 @@ def cos(e1, e2):
                 dotProduct = dotProduct + 1.0
     return dotProduct / (len1 * len2)
 
-
+# key名を取得
 def get_key(k):
     return 'jaccard:product:{}'.format(k)
 
