@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+# jaccard係数を計算
 def jaccard(e1, e2):
     set_e1 = set(e1)
     set_e2 = set(e2)
