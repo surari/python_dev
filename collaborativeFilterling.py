@@ -6,6 +6,18 @@ def jaccard(e1, e2):
     set_e1 = set(e1)
     set_e2 = set(e2)
     return float (len(set_e1 & set_e2)) / float(len(set_e1 | set_e2))
+# memo
+# cos類似度を使うと要素の大きさも見るんだなぁ（今回の実装は要素の大きさを1としている
+def cos(e1, e2):
+    len1 = float(len(e1))
+    len2 = float(len(e2))
+    dotProduct = 0.0
+    for val1 in e1:
+        for val2 in e2:
+            if val1 == val2:
+                dotProduct = dotProduct + 1.0
+    return dotProduct / (len1 * len2)
+
 
 def get_key(k):
     return 'jaccard:product:{}'.format(k)
@@ -37,7 +49,7 @@ for key in products:
         if key == key2:
             continue
         target_customers = products[key2]
-        j = jaccard(base_customers, target_customers)
+        j = cos(base_customers, target_customers)
         r.zadd(get_key(key), key2, j)
 
 print (r.zrevrange(get_key('X'), 0, 2))
